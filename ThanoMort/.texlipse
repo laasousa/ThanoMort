@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Wed Jul 02 11:02:46 CEST 2014
+markTmpDer=true
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=ThanoMort.tex
+outputFile=ThanoMort.pdf
+langSpell=en
+markDer=true
+srcDir=

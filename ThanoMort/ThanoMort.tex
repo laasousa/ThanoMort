@@ -1,0 +1,151 @@
+%%This is a very basic article template.
+%%There is just one section and two subsections.
+\documentclass{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% header, footers for review
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+
+%\chead{submitted as a relationship report to be included in the Special
+%Collection ``Formal Relationships'' edited by Joshua R. Goldstein and James W.
+%Vaupel}
+%\lfoot{Submission \#2518 for review}
+%\rfoot{}
+%\fancyhf{}
+%\fancyhead[C]{\footnotesize{submitted as a relationship report to be included
+% in the Special Collection ``Formal Relationships'' edited by Joshua R. Goldstein and James W.
+%Vaupel}}
+%\fancyfoot[R]{\footnotesize{\bfseries{page \thepage}}}
+%\fancyfoot[L]{\footnotesize\bfseries{Submission \#2518 for review}}
+%\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\footrulewidth}{0pt}
+%\setlength\headheight{117.89105pt}
+%\setcounter{page}{2}
+%\pagestyle{fancy}
+
+%\makeatletter
+%\let\ps@plain\ps@fancy 
+%\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{placeins}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{setspace}
+\doublespacing
+\bibpunct{(}{)}{,}{a}{}{;} 
+\usepackage{url}
+% for the d in integrals
+\newcommand{\dd}{\; \mathrm{d}}
+\newcommand{\ec}{\quad\quad\text{,}}
+\newcommand{\ep}{\quad\quad\text{.}}
+% end preamble.
+
+\begin{document}
+\title{Mathematical relationships in survival by remaining years of life}
+\author{Riffe \& Missov, the dynamic duo}
+\maketitle
+
+Hi Trifon,
+Everything pending here. First the R scripts associated with the figures and
+formulas to follow make use of some pacages that are posted on github, but which
+can be loaded straight into R using the devtools package. That's easiest if
+you're on a Linux system\ldots
+
+I use $^\star$ to mark thanatological functions where reasonable.
+\section{$\mu (a) \rightarrow \mu (y)$}
+
+The tidy approximation is:
+\begin{equation}
+\mu^\star (y) = \int _{a=0}^\infty \mu (a) \mu (a+y) \frac{l(a+y)}{l(a)} \dd
+a\ec
+\end{equation}
+and Figure~\ref{fig:my} shows what it looks like (logged), where 0 means
+destined to die within a year and 100 is 100 years from death.
+\begin{figure}[ht!]
+\caption{$m(y)$ 2010 US males}
+\label{fig:my}
+\includegraphics[width=5in]{Figures/my.pdf}
+\end{figure}
+
+This is a curious pattern for a few reasons. First, it looks different from
+everything in demography that I recognize (but then I don't have some entropy
+patterns in my head). Second, under thanatological age, you can only die if
+you're age 0, and you can't die if you're of a greater age. All you can do is get closer to zero as time passes. So I can't make sense of positive values. Third, in a
+stationary population, the force of mortality by years lived is equal to the force of increment by years left (see
+attached paper under review --- sorry in case they asked you to review it and
+this is awkward). Birth and death in stationary populations are strangely
+convoluted, but I can't make sense of this shape in terms of either. Now let's
+look at a surface of the same Figure~\ref{fig:MY}, just because (best viewed in
+Adobe\ldots):
+\begin{figure}[ht!]
+\caption{$m(y)$ 2010 US males}
+\label{fig:MY}
+\includegraphics[width=5in]{Figures/MY.pdf}
+\end{figure}
+Everything appears freakishly constant except for some major shifts between $30
+>= y <= 85$. Other shifts are comparably subtle, but not necessarily
+insignificant. I think part of why I can't interpret this curve is that it is
+highly dependant on the closeout age of the lifetable. If we extended $\mu (a)$
+to age 150, then these values would just pile onto the curve and not add
+information. So I guess $\mu (a)$ is not useful unless qualified in some way or
+further transformed. 
+
+\section{$d(a) \rightarrow d(y)$}
+We already know that $l(a) = l\star(y)$ for $a=y$, a result from Nicolas Brouard
+(and later Jim). In this sense, $d(a)$ is at once the distribution of deaths in
+a stationary population, the distribution of age at death for a newly born
+cohort, the distribution of time since birth of those dying in a stationary
+population (a death cohort), and in general the distribution of lifespans for a
+given birth or death cohort in a stationary population. Plenty of
+interpretations. If we already have a thanatological interpretation of
+$d^\star(y)$, which is indeed not even transformed from $d(a)$ what does it mean
+to do the following?:
+\begin{equation}
+\label{eq:dy}
+d^{?}(y) = \int _{a=0}^\infty d(a)\mu(a+y)\frac{l(a+y)}{l(a)} \dd a
+\end{equation}
+The ``?'' is an intentional superscript. Let's just call this
+thing $d^{\star\star}(y)$ and pretend we know what we're referring to.
+Figure~\ref{fig:dy} shows what it looks like:
+
+\begin{figure}[ht!]
+\caption{$d^{\star\star}(y)$ 2010 US males}
+\label{fig:dy}
+\includegraphics[width=5in]{Figures/dy.pdf}
+\end{figure}
+
+Figure~\ref{fig:lndy} is the same thing again, logged. Also, not somethign I
+recognize imediately (there's always the risk of these things being identical
+to otherwise known measures from some other context, but they're all pretty
+fresh to me).
+
+\begin{figure}[ht!]
+\caption{$ln(d^{\star\star}(y))$ 2010 US males}
+\label{fig:lndy}
+\includegraphics[width=5in]{Figures/lndy.pdf}
+\end{figure}
+
+\section{So what?}
+Well, step 1 is to interpret these uncanny patterns and give meaning to them.
+I'm not sure how hard it's worth trying, as they may indeed be nonsensical, but
+it's just a question of adequate head-scratching. Any of the above formulas can
+be easily re-written in terms of any single lifetable function, in case that
+helps. Equation~\eqref{eq:dy} would look like:
+
+\begin{equation}
+\label{eq:dymu}
+d^{\star\star}(y) = \int _{a=0}^\infty
+\frac{d}{da}\left(e^{-\int_{0}^{a}\mu(x)\dd
+x}\right)\mu(a+y)\frac{e^{-\int_{0}^{a+y}\mu(x)\dd x}}{e^{-\int_{0}^{a}\mu(x)\dd
+x}}\dd a
+\end{equation}
+
+Ugly, but maybe simplifiable? 
+
+These are just some first thoughts. All of this work, including the latex file,
+R code, etc, can be found here:
+\end{document}
