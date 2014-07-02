@@ -2,12 +2,15 @@
 # the /Figures/ folder
 setwd("/home/triffe/workspace/ThanoMort")
 
-# some generic packages
+# will make Figures directory if it's missing. No risk if it's there.
+dir.create("Figures", showWarnings = FALSE)
+
+# load some generic packages
 library(reshape2)
 library(devtools)
 library(data.table)
 
-# some specific packages:
+# load some specific packages:
 # install 3 packages from github, with the commented out code. Requires
 # newish devtools version, plus you need package-building powers on your
 # system, which is default in linux and needs to be configures in Mac or
