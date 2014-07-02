@@ -1,6 +1,13 @@
+# if you have the repo downloaded, then just switch this to the right place. Figures will produce into 
+# the /Figures/ folder
+setwd("/home/triffe/workspace/ThanoMort")
+
+# some generic packages
 library(reshape2)
 library(devtools)
 library(data.table)
+
+# some specific packages:
 # install 3 packages from github, with the commented out code. Requires
 # newish devtools version, plus you need package-building powers on your
 # system, which is default in linux and needs to be configures in Mac or
@@ -10,6 +17,7 @@ library(data.table)
 # package ‘’ is not available (for R version 3.1.0)
 # just ignore that, I think maybe it's a devtools thing, but there may be some minor glitch
 # in my installation thing. Haven't figured it out yet.
+
 # install_github("DemogBerkeley", subdir = "DemogBerkeley", username = "UCBdemography")
 # install_github("LexisUtils", subdir = "LexisUtils", username = "timriffe")
 # install_github(repo = "Leaves", subdir = "PlosOne/R/RiffeetalFunctions", username = "timriffe")
@@ -17,6 +25,8 @@ library(data.table)
 library(RiffeetalFunctions)
 library(LexisUtils)
 library(DemogBerkeley)
+
+# now work:
 
 # read HMD data live from web.
 # pw <- userInput()
@@ -54,7 +64,7 @@ MY <- acast(LT, Age~Year, value.var = "my")
 #matplot(MY,type='l',lty=1,log='y') # as lines (all variation in middle)
 MY[MY == 0] <- NA
 
-pdf("/home/triffe/workspace/ThanoMort/Figures/MY.pdf")
+pdf("Figures/MY.pdf")
 LexisMap(MY,contour=TRUE,ylab="Years Left", main = "m(x) transformed thanatologically\nUS males")
 dev.off()
 
@@ -67,7 +77,7 @@ plot(LT$lx[yrind],rowSums(Thano(LT$lx[yrind],LT$dx[yrind],FALSE)))
 # way to close it out! So what does it look like to transform dx itself?
 DY <- Thano(LT$dx[yrind],LT$dx[yrind])
 DY[,ncol(DY):1][lower.tri(DY)] <- NA
-pdf("/home/triffe/workspace/ThanoMort/Figures/dy.pdf")
+pdf("Figures/dy.pdf")
 plot(0:110,rowSums(DY, na.rm=TRUE),type='l',ylab="d**(y)",xlab="Years Left")
 lines(0:110,LT$dx[yrind],col="green")
 text(80,.04,"d(x), for reference")
@@ -78,7 +88,7 @@ LexisMap(DY,log=FALSE)
 #LexisMap(DY,log=FALSE,contour=TRUE)
 
 # again, logged
-pdf("/home/triffe/workspace/ThanoMort/Figures/lndy.pdf")
+pdf("Figures/lndy.pdf")
 plot(0:110,rowSums(DY, na.rm=TRUE),type='l',ylab="d**(y)",xlab="Years Left",log="y")
 lines(0:110,LT$dx[yrind],col="green")
 text(80,.04,"d(x), for reference")
