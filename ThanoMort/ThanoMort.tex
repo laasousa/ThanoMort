@@ -35,6 +35,7 @@
 \usepackage{graphicx}
 \usepackage{natbib}
 \usepackage{setspace}
+\usepackage{hyperref}
 \doublespacing
 \bibpunct{(}{)}{,}{a}{}{;} 
 \usepackage{url}
@@ -65,6 +66,7 @@ a\ec
 \end{equation}
 and Figure~\ref{fig:my} shows what it looks like (logged), where 0 means
 destined to die within a year and 100 is 100 years from death.
+
 \begin{figure}[ht!]
 \caption{$m(y)$ 2010 US males}
 \label{fig:my}
@@ -129,6 +131,8 @@ fresh to me).
 \includegraphics[width=5in]{Figures/lndy.pdf}
 \end{figure}
 
+\FloatBarrier
+
 \section{So what?}
 Well, step 1 is to interpret these uncanny patterns and give meaning to them.
 I'm not sure how hard it's worth trying, as they may indeed be nonsensical, but
@@ -147,5 +151,11 @@ x}}\dd a
 Ugly, but maybe simplifiable? 
 
 These are just some first thoughts. All of this work, including the latex file,
-R code, etc, can be found here:
+R code, etc, can be found here: \url{https://github.com/timriffe/ThanoMort/}
+You can either clone it usng \texttt{git} or just download it as a zip file and
+unack it, whatever you prefer.
+
+Best wishes, and lots of fun,
+
+Tim
 \end{document}
